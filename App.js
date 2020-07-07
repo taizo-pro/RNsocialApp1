@@ -1,114 +1,70 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
+import * as React from 'react';
 
-import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import {NavigationContainer,} from '@react-navigation/native'
+import {createStackNavigator} from '@react-navigation/stack'
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+// import LoadingScreen from './screens/LoadingScreen'
+import LoginScreen from './screens/LoginScreen'
+import RegisterScreen from './screens/RegisterScreen'
+import HomeScreen from './screens/HomeScreen'
 
-const App: () => React$Node = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
+import * as firebase from "firebase";
+
+var firebaseConfig = {
+  apiKey: "AIzaSyAjgGAS2AomIDr4MFmGfQezpoXjpiEH6o8",
+  authDomain: "socialapp1-e3cf0.firebaseapp.com",
+  databaseURL: "https://socialapp1-e3cf0.firebaseio.com",
+  projectId: "socialapp1-e3cf0",
+  storageBucket: "socialapp1-e3cf0.appspot.com",
+  messagingSenderId: "217133595072",
+  appId: "1:217133595072:web:fec34bd399458d6e6c3025",
+  measurementId: "G-GEWYS4SH5Q"
 };
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
+// const AppStack = createStackNavigator({
+//   Home: HomeScreen
+// })
 
-export default App;
+// const AuthStack = createStackNavigator({
+//   Login: LoginScreen,
+//   Register: RegisterScreen
+// })
+
+// export default createAppContainer(
+//   createSwitchNavigator(
+//     {
+//       Loading: LoadingScreen,
+//       App: AppStack,
+//       Auth: AuthStack
+//     },
+//     {
+//       initialRouteName: 'Loading'
+//     }
+//   )
+// )
+
+const Stack = createStackNavigator()
+
+export default function App() {
+
+  return(
+    <NavigationContainer>
+      <Stack.Navigator
+        initialRouteName='Login'
+        screenOptions={{
+          headerTintColor: 'white',
+          headerStyle: {
+
+          }
+        }}
+      >
+          {/* <Stack.Screen name='Loading' component={LoadingScreen} options={{headerShown: false}} /> */}
+          <Stack.Screen name='SignIn' component={LoginScreen} />
+          <Stack.Screen name='SignUp' component={RegisterScreen} />
+          <Stack.Screen name='Home' component={HomeScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
+}
