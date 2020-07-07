@@ -18,6 +18,7 @@ export default class RegisterScreen extends React.Component {
   };
 
   handleSignUp = async () => {
+    console.log('handleSignUp')
     await firebase
     .auth()
     .createUserWithEmailAndPassword(this.state.email, this.state.password);

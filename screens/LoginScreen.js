@@ -10,12 +10,15 @@ export default class LoginScreen extends React.Component {
   }
 
   handleLogin = () => {
+    console.log('handleLogin')
     const {email, password} = this.state
 
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
       .catch(error => this.setState({errorMessage: error.message}))
+
+      this.props.navigation.navigate('Home', {email: email})
   }
 
   render() {
