@@ -24,11 +24,11 @@ export default class LoginScreen extends React.Component {
         <View style={styles.circle} />
         <View style={{marginTop: 64}}>
           <Image
-            // source={require('../assets/conversation.png')}
+            source={require('../assets/conversation.png')}
             style={{alignSelf: 'center'}}
           />
         </View>
-
+        
         <View style={{marginHorizontal: 32}}>
           <Text style={styles.header}>メールアドレス</Text>
           <TextInput 

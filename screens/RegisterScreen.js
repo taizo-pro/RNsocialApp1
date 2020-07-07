@@ -31,9 +31,18 @@ export default class RegisterScreen extends React.Component {
         <View style={styles.circle} />
         <View style={{marginTop: 64}}>
           <Image
-            // source={require('../assets/conversation.png')}
+            source={require('../assets/conversation.png')}
             style={{alignSelf: 'center'}}
           />
+          <TouchableOpacity 
+            style={styles.back}
+            onPress={() => this.props.navigation.goBack()}
+          >
+            <Image 
+              source={require('../assets/arrow.png')}
+              style={{width: 16, height: 16, alignSelf: 'center' }}
+            />
+          </TouchableOpacity>
         </View>
 
         <View style={{marginHorizontal: 32}}>
@@ -122,4 +131,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  back: {
+    position: 'absolute',
+    top: 20,
+    left: 32,
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    backgroundColor: 'rgba(21, 22, 48, 0.1)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
 });
