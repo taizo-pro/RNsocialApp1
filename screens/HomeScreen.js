@@ -26,7 +26,7 @@ export default class HomeScreen extends React.Component {
         <Header style={{backgroundColor: 'mediumpurple'}}>
           <Left></Left>
           <Body>
-            <Title>ホーム</Title>
+            <Title style={{color: 'white'}}>ホーム</Title>
           </Body>
           <Right></Right>
         </Header>
