@@ -7,7 +7,7 @@ export default class ProfileScreen extends React.Component {
   render() {
     return(
       <View style={styles.container}>
-        <Text>Chat</Text>
+        <Text>Profile</Text>
       </View>
     )
   }

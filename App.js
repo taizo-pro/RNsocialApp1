@@ -11,6 +11,7 @@ import HomeScreen from './screens/HomeScreen';
 import ChatScreen from './screens/ChatScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import PostScreen from './screens/PostScreen';
+import NotificationScreen from './screens/NotificationScreen';
 
 import * as firebase from 'firebase';
 
@@ -40,7 +41,7 @@ const TabNavigation = () => {
       />
       <Tab.Screen name="チャット" component={ChatScreen} />
       <Tab.Screen name="投稿" component={PostScreen} />
-      <Tab.Screen name="お知らせ" component={PostScreen} />
+      <Tab.Screen name="お知らせ" component={NotificationScreen} />
       <Tab.Screen name="プロフィール" component={ProfileScreen} />
     </Tab.Navigator>
   );
