@@ -2,13 +2,18 @@ import * as React from 'react';
 
 import {NavigationContainer,} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack'
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 
-// import LoadingScreen from './screens/LoadingScreen'
+import LoadingScreen from './screens/LoadingScreen'
 import LoginScreen from './screens/LoginScreen'
 import RegisterScreen from './screens/RegisterScreen'
 import HomeScreen from './screens/HomeScreen'
+import ChatScreen from './screens/ChatScreen';
+import ProfileScreen from './screens/ProfileScreen';
+import PostScreen from './screens/PostScreen';
 
 import * as firebase from "firebase";
+import { cos } from 'react-native-reanimated';
 
 var firebaseConfig = {
   apiKey: "AIzaSyAjgGAS2AomIDr4MFmGfQezpoXjpiEH6o8",
@@ -23,48 +28,25 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-// const AppStack = createStackNavigator({
-//   Home: HomeScreen
-// })
-
-// const AuthStack = createStackNavigator({
-//   Login: LoginScreen,
-//   Register: RegisterScreen
-// })
-
-// export default createAppContainer(
-//   createSwitchNavigator(
-//     {
-//       Loading: LoadingScreen,
-//       App: AppStack,
-//       Auth: AuthStack
-//     },
-//     {
-//       initialRouteName: 'Loading'
-//     }
-//   )
-// )
-
 const Stack = createStackNavigator()
+const Tab = createBottomTabNavigator()
+
+const TabNavigation = () => {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name='Home' component={HomeScreen} />
+      <Tab.Screen name='Chat' component={ChatScreen} />
+      <Tab.Screen name='Post' component={PostScreen} />
+      <Tab.Screen name='Profile' component={ProfileScreen} />
+    </Tab.Navigator>
+  )
+}
 
 export default function App() {
 
   return(
     <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName='Login'
-        screenOptions={{
-          headerTintColor: 'white',
-          headerStyle: {
-            
-          }
-        }}
-      >
-          {/* <Stack.Screen name='Loading' component={LoadingScreen} options={{headerShown: false}} /> */}
-          <Stack.Screen name='SignIn' component={LoginScreen} options={{headerShown: false}}/>
-          <Stack.Screen name='SignUp' component={RegisterScreen} options={{headerShown: false}}/>
-          <Stack.Screen name='Home' component={HomeScreen} />
-      </Stack.Navigator>
+      <TabNavigation />
     </NavigationContainer>
   )
 }

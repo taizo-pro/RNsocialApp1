@@ -10,9 +10,9 @@ export default class HomeScreen extends React.Component {
   }
 
   componentDidMount() {
-    const {email, displayName} = firebase.auth().currentUser
+    // const {email, displayName} = firebase.auth().currentUser
 
-    this.setState({email, displayName})
+    // this.setState({email, displayName})
   }
 
   signOutUser = () => {
@@ -22,7 +22,7 @@ export default class HomeScreen extends React.Component {
   render() {
     return(
       <View style={StyleSheet.container}>
-        <Text>こんにちは {this.state.email}!</Text>
+        {/* <Text>こんにちは {this.state.email}!</Text> */}
 
         <TouchableOpacity 
           style={{marginTop: 32}}
